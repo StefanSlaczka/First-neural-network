@@ -8,5 +8,7 @@ class TestDots{
 
         // should be 21
         System.err.println("Dot product = " + dp.totalSum(a, b));
+
+        
     }
 }
