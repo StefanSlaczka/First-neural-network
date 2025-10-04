@@ -3,6 +3,8 @@ import java.util.Scanner;
 class TestDots{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("how many elemnts is in the lists");
         int n = scanner.nextInt();
 
         int[] a = new int[n];
@@ -25,7 +27,5 @@ class TestDots{
 
         // compute the dot product
         System.err.println("Dot product = " + dp.totalSum());
-
-        
     }
 }
