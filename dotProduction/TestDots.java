@@ -6,6 +6,7 @@ class TestDots{
         DotProduct dp = new DotProduct();
         dp.setArrays(a, b);
 
+        // should be 21
         System.err.println("Dot product = " + dp.totalSum(a, b));
     }
 }
