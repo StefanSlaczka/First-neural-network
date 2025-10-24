@@ -16,17 +16,17 @@ public class SimpleNeuralNetwork {
     }
 
     // Sigmoid activation function
-    private double sigmoid(double x) {  // Fixed: was "sigmiod"
+    private double sigmoid(double x) {
         return 1.0 / (1.0 + Math.exp(-x));
     }
 
-    // Derivative of sigmoid - FIXED THIS!
+    // Derivative of sigmoid
     private double sigmoidDerivative(double x) {
         return x * (1 - x);  // FIXED: was 1.0 / (1 - x) which is wrong!
     }
 
     // Forward pass - make a prediction
-    public double predict(double[] inputs) {  // Fixed: was "perdict"
+    public double predict(double[] inputs) {
         double sum = bias;
         for (int i = 0; i < inputs.length; i++) {
             sum += inputs[i] * weights[i];
@@ -37,7 +37,7 @@ public class SimpleNeuralNetwork {
     // Train the network using one example
     public void train(double[] inputs, double target) {
         // Forward pass
-        double prediction = predict(inputs);  // Fixed: was "perdict"
+        double prediction = predict(inputs);
 
         // Calculate error
         double error = target - prediction;
