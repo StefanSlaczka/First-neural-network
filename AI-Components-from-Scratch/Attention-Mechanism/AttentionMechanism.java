@@ -20,5 +20,11 @@ class AttentionMechanism{
         this.input = input;
     }
 
+    public String[] toListString(String input){
+        String regex = " ";
+        String[] myArray = input.split(regex);
+        return myArray;
+    }
+
 
 }
