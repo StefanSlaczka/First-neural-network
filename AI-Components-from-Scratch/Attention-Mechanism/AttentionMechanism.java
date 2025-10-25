@@ -20,6 +20,7 @@ class AttentionMechanism{
         this.input = input;
     }
 
+    // toListString seprates the sentence into its own words
     public String[] toListString(String input){
         String regex = " ";
         String[] myArray = input.split(regex);
