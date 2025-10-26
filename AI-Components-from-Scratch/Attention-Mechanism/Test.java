@@ -4,12 +4,15 @@ class Test{
         // Create new object and using the toListString
         AttentionMechanism am = new AttentionMechanism();
         String sentence = "The cat sat on the mat because it was tired";
-        String[] result = am.toListString(sentence);
+
+        String[] words = am.toListString(sentence);
+        double[] scores = am.computeAttentionScores(words);
 
         // Prints out the words one at a time
-        System.out.println("Words in the sentence");
-        for (String word : result){
-            System.out.println(word);
+        System.out.println("Words in the sentence and scores");
+        
+        for(int i = 0; i < words.length; i++){
+            System.out.println(words[i] + " -> " + scores[i]);
         }
 
     }
