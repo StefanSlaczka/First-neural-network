@@ -4,10 +4,12 @@ import java.util.HashSet;
 class AttentionMechanism{
 
     /*
-        ["The", "cat", "sat", "on", "the", "mat", "because", "it", "was", "tired"]
-        
-        Goal asign vausles to this
-        words like cat should be higher because its an entity
+        Now I want to moving toward representing words as feature vectors
+        so I am going to make a noun and then a verb for represive
+        ex:
+        the [0.1, 0.1]
+        cat [1.0, 0.1]
+        sat [0.1, 1.0]
     */
 
     String input;
