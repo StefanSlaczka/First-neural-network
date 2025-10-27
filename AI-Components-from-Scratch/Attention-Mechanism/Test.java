@@ -6,14 +6,10 @@ class Test{
         String sentence = "The cat sat on the mat because it was tired";
 
         String[] words = am.toListString(sentence);
-        double[] scores = am.computeAttentionScores(words);
+        double[][] scores = am.computeAttentionScores(words);
 
         // Prints out the words one at a time
         System.out.println("Words in the sentence and scores");
-        
-        for(int i = 0; i < words.length; i++){
-            System.out.println(words[i] + " -> " + scores[i]);
-        }
-
+        am.printAttention(words, scores);
     }
 }

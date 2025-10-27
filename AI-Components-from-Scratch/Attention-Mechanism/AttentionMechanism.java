@@ -3,15 +3,6 @@ import java.util.HashSet;
 
 class AttentionMechanism{
 
-    /*
-        Now I want to moving toward representing words as feature vectors
-        so I am going to make a noun and then a verb for represive
-        ex:
-        the [0.1, 0.1]
-        cat [1.0, 0.1]
-        sat [0.1, 1.0]
-    */
-
     String input;
 
     public AttentionMechanism(){}
@@ -25,25 +16,42 @@ class AttentionMechanism{
         return input.split(" ");
     }
 
-    public double[] computeAttentionScores(String[] words){
+    public double[][] computeAttentionScores(String[] words){
         // Making an array of doubles so we can see the Sttention scores of each word
-        double[] scores = new double[words.length];
+        double[][] scores = new double[words.length][2];
 
-        // importent words (Entities)
-        HashSet<String> importantWords = new HashSet<>(Arrays.asList(
+        // importent nouns
+        HashSet<String> nounWords = new HashSet<>(Arrays.asList(
             "cat", "mat", "dog", "Alice", "Bob"
         ));
 
+        // importent verbs
+        HashSet<String> verbWords = new HashSet<>(Arrays.asList(
+            "sat", "run", "walk", "Swim", "fight"
+        ));
+
+        // adding vaules to each word
+
+        // needs to be worked on logic is not correct
         for (int i = 0; i < words.length; i++){
             String word = words[i].toLowerCase();
-            if (importantWords.contains(word)){
-                scores[i] = 1.0;
-            }else {
-                scores[i] = 0.1;
+            scores[i][0] = 0.1;
+            scores[i][1] = 0.1;
+            if (nounWords.contains(word)){
+                scores[i][0] += 0.5;
+                scores[i][1] += 0.1;
+            }if (verbWords.contains(word)){
+                scores[i][0] += 0.1;
+                scores[i][1] += 0.5;
             }
         }
         return scores;
     }
 
-
+    public void printAttention(String[] words, double[][] scores){
+        System.out.println("Word Feature Vectores:");
+        for (int i = 0; i < words.length; i++){
+            System.out.printf("%-10s -> %s%n", words[i], Arrays.toString(scores[i]));
+        }
+    }
 }
