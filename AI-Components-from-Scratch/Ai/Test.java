@@ -11,5 +11,15 @@ class Test{
         // Prints out the words one at a time
         System.out.println("Words in the sentence and scores");
         am.printAttention(words, scores);
+
+        /*
+            Thing I need to do.
+
+            Send the data to the transformer
+            
+            be able to print after step one
+
+            print the toString method
+        */
     }
 }
