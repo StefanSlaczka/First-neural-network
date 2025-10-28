@@ -4,11 +4,25 @@ import java.util.HashSet;
 class AttentionMechanism{
 
     String input;
+    double bias;
 
-    public AttentionMechanism(){}
+    public AttentionMechanism(){
+        // Default bias vaule
+        this.bias = 0.1;
+    }
 
     public AttentionMechanism(String input){
         this.input = input;
+        this.bias = 0.1;
+    }
+
+    // Setter for bias
+    public void setBias(double bias){
+        this.bias = bias;
+    }
+
+    public double getBias(){
+        return bias;
     }
 
     // toListString seprates the sentence into its own words
@@ -35,8 +49,8 @@ class AttentionMechanism{
         // needs to be worked on logic is not correct
         for (int i = 0; i < words.length; i++){
             String word = words[i].toLowerCase();
-            scores[i][0] = 0.1;
-            scores[i][1] = 0.1;
+            scores[i][0] = bias;
+            scores[i][1] = bias;
             if (nounWords.contains(word)){
                 scores[i][0] += 0.5;
                 scores[i][1] += 0.1;
