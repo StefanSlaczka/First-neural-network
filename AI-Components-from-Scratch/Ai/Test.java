@@ -12,14 +12,13 @@ class Test{
         System.out.println("Words in the sentence and scores");
         am.printAttention(words, scores);
 
-        /*
-            Thing I need to do.
+        // Send the data to the Transistor
+        Transistor transistor = new Transistor(words, scores, am.getBias());
 
-            Send the data to the transformer
-            
-            be able to print after step one
+        // Compute the weighted sum
+        transistor.computeWeightedSum();
 
-            print the toString method
-        */
+        // Print the result
+        System.out.println("\n" + transistor);
     }
 }
