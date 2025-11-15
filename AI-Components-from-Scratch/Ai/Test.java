@@ -20,5 +20,9 @@ class Test{
 
         // Print the result
         System.out.println("\n" + transistor);
+
+        // Tells us the network output ans what is the importent words
+        System.out.println("\n Network Output: ");
+        System.out.println(SentenceGenerator.genrate(transistor));
     }
 }

@@ -31,12 +31,12 @@ class AttentionMechanism{
     }
 
     public double[][] computeAttentionScores(String[] words){
-        // Making an array of doubles so we can see the Sttention scores of each word
+        // Making an array of doubles so we can see the Attention scores of each word
         double[][] scores = new double[words.length][2];
 
         // importent nouns
         HashSet<String> nounWords = new HashSet<>(Arrays.asList(
-            "cat", "mat", "dog", "Alice", "Bob"
+            "cat", "mat", "dog", "Alice", "bob"
         ));
 
         // importent verbs
@@ -62,6 +62,7 @@ class AttentionMechanism{
         return scores;
     }
 
+    // Prints the words and scores
     public void printAttention(String[] words, double[][] scores){
         System.out.println("Word Feature Vectores:");
         for (int i = 0; i < words.length; i++){

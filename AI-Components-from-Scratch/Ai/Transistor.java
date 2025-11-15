@@ -16,6 +16,7 @@ class Transistor{
 
     // Step 1: Compute weighted sum
     public double computeWeightedSum(){
+        sum = 0; // reset before summing
         for (int i = 0; i < scores.length; i++){
             // We are taking the first feature as the weight
             sum += scores[i][0];
@@ -50,7 +51,7 @@ class Transistor{
         }
 
         sb.append("\nWeighted sum (z): ").append(String.format("%.4f", sum));
-        sb.append("\nActivation outpiuts:\n");
+        sb.append("\nActivation outputs:\n");
         sb.append(String.format("Sigmoid: %.4f%n", activate(sum, "sigmoid")));
         sb.append(String.format("ReLU: %.4f%n", activate(sum, "ReLU")));
         sb.append(String.format("Tanh: %.4f%n", activate(sum, "Tanh")));
@@ -58,5 +59,4 @@ class Transistor{
 
         return sb.toString();
     }
-
 }
