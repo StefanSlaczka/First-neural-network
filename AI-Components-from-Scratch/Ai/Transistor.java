@@ -3,6 +3,7 @@ import java.util.Arrays;
 class Transistor{
     String[] words;
     double[][] scores;
+    double[] weights;
     double bias;
     double sum;
 
@@ -12,14 +13,20 @@ class Transistor{
         this.words = words;
         this.scores = scores;
         this.bias = bias;
+        this.weights = new double[scores.length];
+
+        // Initialize random weights
+        for(int i = 0; i < weights.length; i++) {
+            weights[i] = Math.random() * 0.1; // Small random weights
+        }
+
     }
 
     // Step 1: Compute weighted sum
     public double computeWeightedSum(){
         sum = 0; // reset before summing
         for (int i = 0; i < scores.length; i++){
-            // We are taking the first feature as the weight
-            sum += scores[i][0];
+            sum += scores[i][0] * weights[i];
         }
         sum += bias;
         return sum;
@@ -47,7 +54,8 @@ class Transistor{
         sb.append("Words and scores: \n");
         
         for (int i = 0; i < words.length; i++) {
-            sb.append(String.format("%-10s -> %s%n", words[i], Arrays.toString(scores[i])));
+            sb.append(String.format("%-10s -> %s, Weight: %4f%n",
+                words[i], Arrays.toString(scores[i]), weights[i]));
         }
 
         sb.append("\nWeighted sum (z): ").append(String.format("%.4f", sum));

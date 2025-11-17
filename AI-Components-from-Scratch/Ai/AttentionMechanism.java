@@ -54,7 +54,7 @@ class AttentionMechanism{
             if (nounWords.contains(word)){
                 scores[i][0] += 0.5;
                 scores[i][1] += 0.1;
-            }if (verbWords.contains(word)){
+            }else if (verbWords.contains(word)){
                 scores[i][0] += 0.1;
                 scores[i][1] += 0.5;
             }
