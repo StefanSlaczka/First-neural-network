@@ -6,6 +6,10 @@ class SentenceGenerator {
         double[][] scores = transistor.scores;
         double bias  = transistor.bias;
 
+        // Using softmax to get word importance probabilities
+        double[] featureScores = transistor.getFeatureScores();
+        double[] wordProbailities = transistor.softmax(featureScores);
+
         StringBuilder importantWords = new StringBuilder();
         double threshold = bias + 0.3; // Minimum score required to consider a word "important"
         
@@ -22,6 +26,17 @@ class SentenceGenerator {
             kewwords = "nothing specific";
         }
 
+        // Finding the most probable word using softmax
+        int maxProbIndex = 0;
+        double maxProb = 0;
+        for (int i = 0; i < wordProbailities.length; i++){
+            if (wordProbailities[i] > maxProb){
+                maxProb = wordProbailities[i];
+                maxProbIndex = 1;
+            }
+        }
+        String mostImportantWord = words[maxProbIndex];
+
         // Compute activation level using the transistor's internal model
         double z = transistor.computeWeightedSum();
         double activation  = transistor.activate(z , "sigmoid");
@@ -37,9 +52,8 @@ class SentenceGenerator {
         }
 
         return String.format(
-            "Based on analysis, the sentence focuses on '%s' and represents %s.",
-            kewwords,
-            description
+            "Based on analysis, the sentence focuses on '%s' (most importent: '%s' at %.1f%%) and represents %s.",
+            kewwords, mostImportantWord, maxProb * 100, description
         );
     }
 }
